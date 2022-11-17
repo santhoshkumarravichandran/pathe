@@ -1,18 +1,22 @@
 <template>
     <div class="home">
-        <div class="banner">
-            <h2 class="header">Pathe</h2>
-        </div>
-        <storyItem v-for="(story, index) in stories" :key="index" :item="story" :index="index"></storyItem>
+      <navigation></navigation>
+      <Menu></Menu>
+      <banner :name="'test'" :description="'test'"></banner>
     </div>
 </template>
 <script>
-import storyItem from '../components/singleitem.vue'
- import { getTopStories } from '../services/streamingService'
+
+import { getTopStories } from '../services/streamingService'
+import Menu from '../components/menu/Menu.vue'
+import Banner from '../components/banner/Banner.vue'
+import Navigation from '../components/navigation/Navigation.vue'
 export default {
   name: 'Home',
   components: {
-    storyItem
+    Banner,
+    Navigation,
+    Menu
   },
   data () {
     return {
@@ -21,11 +25,8 @@ export default {
   },
   created () {
     getTopStories().then((response) => {
-        console.log(response)
+      console.log(response)
     })
-    // storiesWithItems().then(res => {
-    //   this.stories = res.sort(sortByScore)
-    // })
   }
 }
 </script>
