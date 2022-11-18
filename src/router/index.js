@@ -10,7 +10,7 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
-    },
+    }
     // {
     //   path: '/story/:id',
     //   name: 'single',

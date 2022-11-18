@@ -2,21 +2,27 @@
     <div class="home">
       <navigation></navigation>
       <Menu></Menu>
-      <banner :name="'test'" :description="'test'"></banner>
+      <!-- <div class="accordion">
+        <accordion ></accordion>
+      </div> -->
+      <search-movie></search-movie>
     </div>
 </template>
 <script>
 
 import { getTopStories } from '../services/streamingService'
 import Menu from '../components/menu/Menu.vue'
-import Banner from '../components/banner/Banner.vue'
 import Navigation from '../components/navigation/Navigation.vue'
+import Accordion from '../components/Accordion/Accordion.vue'
+import SearchMovie from '../components/search-movie/SearchMovie.vue'
+
 export default {
   name: 'Home',
   components: {
-    Banner,
     Navigation,
-    Menu
+    Menu,
+    Accordion,
+    SearchMovie
   },
   data () {
     return {
@@ -41,7 +47,9 @@ export default {
     padding: 0 !important;
     margin: 30px;
 }
-
+.accordion {
+  height: 400px;
+}
 .banner {
     display: flex;
     flex-direction: row;

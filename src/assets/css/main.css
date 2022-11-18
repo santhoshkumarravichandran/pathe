@@ -1,2 +1,8 @@
-* ---- global styles ---- */
-   
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
+#pathe {
+  font-family: 'Roboto', sans-serif;
+}

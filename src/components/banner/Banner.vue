@@ -6,6 +6,7 @@
    :transitions="vfTransitions"
    ref="slider">
 </vue-flux>
+
   </div>
 </template>
 <script>
@@ -39,7 +40,7 @@ export default {
         infinite: true,
         allowToSkipTransition: true
       },
-      size:{
+      size: {
         width: 100,
         height: 100
       },

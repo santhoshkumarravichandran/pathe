@@ -5,11 +5,8 @@ const baseUrl = 'https://api.tvmaze.com/'
  *  returns stories[].
 */
 export async function getTopStories () {
-  let stories = []
-  console.log('making an api call')
-  const response = await axios.get(`${baseUrl}/schedule`)
-  stories = response.data
-  return stories
+  const { data } = await axios.get(`${baseUrl}shows`)
+  return data
 }
 
 /*
