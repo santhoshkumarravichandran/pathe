@@ -1,9 +1,14 @@
 <template>
   <div class="container">
-    <input-search></input-search>
-    <gener-filter :filterOptions="genre" :title="'Genre'"></gener-filter>
+    <div style="width:100%">
+      <input-search></input-search>
+    </div>
+    <div class="filter">
+      <gener-filter :filterOptions="genre" :title="'Genre'"></gener-filter>
+    </div>
+    <div>
     <gener-filter :filterOptions="rating" :title="'Rating'"></gener-filter>
-   
+    </div>
   </div>
 </template>
 <script>
@@ -26,11 +31,11 @@ export default {
 </script>
 <style scoped>
 .container {
-  display: flex;
-  /* for horizontal aligning of child divs */
-  justify-content:  flex-start;
-  /* for vertical aligning */
-  align-items: flex-start;
-  
+  display: flex; 
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.filter {
+  padding-left: 10px;
 }
 </style>

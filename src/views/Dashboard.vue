@@ -1,5 +1,6 @@
 <template>
   <div>
+    <control-bar></control-bar>
     <movie-section :category="nowStreaming"></movie-section>
     <movie-section :category="specialEvents"></movie-section>
     <movie-section :category="kids"></movie-section>
@@ -8,10 +9,12 @@
 <script>
 
 import MovieSection from '../components/Organisms/MovieSection/MovieSection.vue'
+import ControlBar from '../components/Organisms/ControlBar/ControlBar.vue';
+
 export default {
   name: 'Dashboard',
   components: {
-    MovieSection
+    MovieSection, ControlBar
   },
   data: function () {
     return {

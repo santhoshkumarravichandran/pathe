@@ -17,6 +17,7 @@ export default {
 <style scoped>
 .form-control{
     margin-left: 10px !important;
+    height: 35px;
 }
 .form-control:focus {
   outline: none !important;
