@@ -1,29 +1,66 @@
 <template>
-   <b-form-input class="custom-control" :id="`type-search`" :type="'search'" 
-   v-model="keyword"
-   placeholder="Search your fav show"></b-form-input>
+  <div>
+      <b-form-input list="input-list" id="input-with-list" v-model="keyword"
+        placeholder="Search your fav show"
+        @change="onChange(keyword)"
+      @input="getSuggestions"></b-form-input>
+      <b-form-datalist id="input-list" :options="options" @change="onChange()"></b-form-datalist>
+  </div>
 </template>
 
 <script>
+import { searchShow, singleSearch } from '../../../services/streamingService'
+
 export default {
   name: 'InputSearch',
-  data: function() {
+  data: function () {
     return {
-      keyword: ''
+      suggestion: [],
+      keyword: '',
+      options: []
     }
+  },
+  methods: {
+    getSuggestions () {
+      console.log(this.keyword)
+      setTimeout(() => {
+        this.options = this.suggestion.filter((suggestion) => suggestion.indexOf(this.keyword.toLowerCase()) !== -1)
+      }, 300)
+    },
+    onChange: function () {
+      if (this.keyword !== '') {
+        singleSearch(this.keyword).then((response) => {
+          const {id} = response
+          this.$router.push('/movie/' + id)
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
+    }
+  },
+  mounted: function () {
+    searchShow(this.keyword).then((response) => {
+      const result = response.map((show) => show.name.toLowerCase())
+      this.suggestion = [...new Set(result)]
+    }).catch((error) => console.log(error))
   }
 }
 </script>
 <style scoped>
-.form-control{
-    margin-left: 10px !important;
-    height: 35px;
+.form-control {
+  margin-left: 10px !important;
+  height: 35px;
 }
+
 .form-control:focus {
   outline: none !important;
   box-shadow: 0 0 0 0.25rem #ffc426 !important;
   -webkit-box-shadow: 0 0 0 0.25rem #ffc426 !important;
   border-color: #ffc426 !important;
   outline: none !important;
+}
+
+.dropdown-menu ul {
+  z-index: 1000;
 }
 </style>

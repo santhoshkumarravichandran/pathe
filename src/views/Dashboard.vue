@@ -9,7 +9,7 @@
 <script>
 
 import MovieSection from '../components/Organisms/MovieSection/MovieSection.vue'
-import ControlBar from '../components/Organisms/ControlBar/ControlBar.vue';
+import ControlBar from '../components/Organisms/ControlBar/ControlBar.vue'
 
 export default {
   name: 'Dashboard',

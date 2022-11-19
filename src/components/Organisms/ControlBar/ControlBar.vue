@@ -31,7 +31,7 @@ export default {
 </script>
 <style scoped>
 .container {
-  display: flex; 
+  display: flex;
   margin-top: 10px;
   margin-left: 20px;
 }
