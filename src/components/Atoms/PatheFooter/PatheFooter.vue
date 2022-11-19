@@ -26,14 +26,14 @@ export default {
 </script>
 <style scoped>
 .wrapper {
-  position: absolute;
-  bottom: 0;
   background: #ffc426;
   height: 80px;
   display: flex;
   width: 100%;
   justify-content: center;
   align-content: center;
+  position:fixed;
+  bottom:0;
 }
 .content {
   align-self: center;

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Dashboard from '../views/Dashboard.vue'
 import MovieInformation from '../views/MovieInformation.vue'
+
 Vue.use(Router)
 
 export default new Router({

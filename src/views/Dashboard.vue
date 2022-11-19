@@ -1,20 +1,20 @@
 <template>
-    <div>
-     <list :title="nowStreaming"></list>
-     <list :title="kids" :audience="'kids'"></list>
-    </div>
+  <div>
+    <movie-section :category="nowStreaming"></movie-section>
+    <movie-section :category="specialEvents"></movie-section>
+    <movie-section :category="kids"></movie-section>
+  </div>
 </template>
 <script>
 
-import List from '../components/List/List.vue'
+import MovieSection from '../components/Organisms/MovieSection/MovieSection.vue'
 export default {
   name: 'Dashboard',
   components: {
-    List
+    MovieSection
   },
-  data () {
+  data: function () {
     return {
-      stories: [],
       nowStreaming: 'Now Streaming',
       specialEvents: 'SpecialEvents',
       kids: 'Kids Sepcial'

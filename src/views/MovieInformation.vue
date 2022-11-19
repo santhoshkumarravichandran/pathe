@@ -17,7 +17,7 @@
 </template>
 <script>
 import { getShowInformation } from '../services/streamingService'
-import MovieBio from '../components/Organism/MovieBio/MovieBio.vue'
+import MovieBio from '../components/Molecules/MovieBio/MovieBio.vue'
 export default {
   name: 'MovieInformation',
   components: {

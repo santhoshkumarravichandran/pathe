@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import PatheFooter from './components/PatheFooter/PatheFooter.vue'
-import PatheHeader from './components/PatheHeader/PatheHeader.vue'
-import Container from './components/Container/Container.vue'
+import PatheFooter from './components/Atoms/PatheFooter/PatheFooter.vue'
+import PatheHeader from './components/Atoms/PatheHeader/PatheHeader.vue'
+import Container from './components/Atoms/Container/Container.vue'
 
 export default {
   name: 'pathe',
