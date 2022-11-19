@@ -30,7 +30,6 @@ export default {
   bottom: 0;
   background: #ffc426;
   height: 80px;
-  box-shadow: 0 0 2px 2px rgb(0 0 0 / 20%);
   display: flex;
   width: 100%;
   justify-content: center;

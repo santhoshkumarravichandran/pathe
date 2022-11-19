@@ -1,7 +1,7 @@
 <template>
-    <h3 class="CustomHeading">
+    <h6 class="CustomHeading">
         {{ tite | tranformToCaps }}
-    </h3>
+    </h6>
 </template>
 
 <script>
@@ -22,7 +22,8 @@ export default {
 </script>
 <style scoped>
 .CustomHeading {
-    padding-top: 10px;
-    text-align: left;
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
 }
 </style>

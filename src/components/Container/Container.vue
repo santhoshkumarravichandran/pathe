@@ -5,7 +5,7 @@
 <script>
 
 export default {
-  name: 'Banner'
+  name: 'Container'
 }
 </script>
 <style scoped>

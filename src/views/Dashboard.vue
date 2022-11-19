@@ -1,13 +1,14 @@
 <template>
-    <div class="home">
+    <div>
      <list :title="nowStreaming"></list>
+     <list :title="kids" :audience="'kids'"></list>
     </div>
 </template>
 <script>
 
 import List from '../components/List/List.vue'
 export default {
-  name: 'Home',
+  name: 'Dashboard',
   components: {
     List
   },
@@ -16,12 +17,8 @@ export default {
       stories: [],
       nowStreaming: 'Now Streaming',
       specialEvents: 'SpecialEvents',
-      kids: 'Kids'
+      kids: 'Kids Sepcial'
     }
-  },
-  created () {
   }
 }
 </script>
-<style scoped>
-</style>

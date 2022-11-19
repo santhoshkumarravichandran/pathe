@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home'
-
+import Dashboard from '../views/Dashboard.vue'
+import MovieInformation from '../views/MovieInformation.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/movie/:id',
+      name: 'MovieInformation',
+      component: MovieInformation
     }
-    // {
-    //   path: '/story/:id',
-    //   name: 'single',
-    //   component: Single
-    // }
   ],
   mode: 'history',
   base: process.env.BASE_URL

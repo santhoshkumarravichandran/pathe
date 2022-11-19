@@ -38,13 +38,6 @@ module.exports = {
       '@': resolve('src'),
     }
   },
-  plugins: [
-    new GoogleFontsPlugin({
-      fonts: [
-        { family: "Roboto"}
-      ]
-    })
-  ],
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),

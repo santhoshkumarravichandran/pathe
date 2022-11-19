@@ -1,27 +1,16 @@
 import axios from 'axios'
 const baseUrl = 'https://api.tvmaze.com/'
+const showsPath = 'shows'
 /*
- *  Fetch list of the top 50 stories
- *  returns stories[].
+ *  Fetch list of the all movies streaming now
+ *  returns
 */
-export async function getTopStories () {
-  const { data } = await axios.get(`${baseUrl}shows`)
+export async function getAllStreamingsNow () {
+  const { data = null } = await axios.get(`${baseUrl}${showsPath}`)
   return data
 }
 
-/*
- *  Sorts the result based on the property score;
- *  returns a sorted array.
-*/
-export function sortByScore (a, b) {
-  if (a.score < b.score) {
-    // a comes before b in the sorted order
-    return -1
-  } else if (a.score > b.score) {
-    // a comes before b in the sorted order
-    return 1
-  } else {
-    // a and b are the same
-    return 0
-  }
+export async function getShowInformation (id) {
+  const { data = null } = await axios.get(`${baseUrl}${showsPath}/${id}`)
+  return data
 }

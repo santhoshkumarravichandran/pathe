@@ -1,6 +1,6 @@
 <template>
   <div id="pathe">
-    <banner></banner>
+    <container></container>
     <pathe-header></pathe-header>
     <router-view/>
     <pathe-footer></pathe-footer>
@@ -10,22 +10,22 @@
 <script>
 import PatheFooter from './components/PatheFooter/PatheFooter.vue'
 import PatheHeader from './components/PatheHeader/PatheHeader.vue'
-import Banner from './components/Banner/Banner.vue'
+import Container from './components/Container/Container.vue'
+
 export default {
   name: 'pathe',
   components: {
     PatheFooter,
     PatheHeader,
-    Banner
+    Container
   }
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
 #pathe {
-  font-family: 'Roboto', sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
