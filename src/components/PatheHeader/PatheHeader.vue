@@ -1,7 +1,7 @@
 <template>
     <div >
         <b-navbar toggleable="lg" type="dark" variant="warning">
-            <b-navbar-brand href="#" class="custom-header">
+            <b-navbar-brand href="#" class="custom-header" @click="navigateToHome()">
                 <b-img src="https://www.pathe.nl/assets/favicons/favicon-32x32.png"></b-img>
             </b-navbar-brand>
             <span class="icon-content">
@@ -26,7 +26,12 @@
 <script>
 
 export default {
-  name: 'PatheHeader'
+  name: 'PatheHeader',
+  methods: {
+    navigateToHome: function() {
+        this.$router.push('/')
+    }
+  }
 }
 </script>
 <style scoped>

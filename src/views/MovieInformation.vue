@@ -2,24 +2,26 @@
     <div>
         <div class="wrapper">
             <div clss="left-container">
-                <b-img :src="`${movieInformation.image.original}`" fluid alt="Responsive image"></b-img>
             </div>
             <div class="right-container">
-                <p class="additional-information" v-html="movieInformation.summary">
-                </p>
+              <movie-bio
+              :title="movieInformation.name"
+              :imageURL="movieInformation.image.original"
+              :runtime="movieInformation.runtime"
+              :language="movieInformation.language"
+              :summary="movieInformation.summary"
+              ></movie-bio>
             </div>
-        </div>
-        <div>
-            <p class="additional-information" v-html="movieInformation.summary">
-            </p>
         </div>
     </div>
 </template>
 <script>
 import { getShowInformation } from '../services/streamingService'
+import MovieBio from '../components/Organism/MovieBio/MovieBio.vue'
 export default {
   name: 'MovieInformation',
   components: {
+    MovieBio
   },
   mounted: function () {
     const movieId = this.$route.params.id
@@ -31,7 +33,15 @@ export default {
   },
   data () {
     return {
-      movieInformation: {}
+      movieInformation: {
+        name: '',
+        image: {
+          original: ''
+        },
+        runtime: 0,
+        language: '',
+        summary: ''
+      }
     }
   },
   methods: {
@@ -39,13 +49,14 @@ export default {
       // get the query movie id from the query param and load the movie information
       getShowInformation(movieId).then((movieInformation) => {
         const { image, name = 'No Movie Information',
-          rating, language, summary } = movieInformation
+          rating, language, summary, runtime } = movieInformation
         this.movieInformation = {
           image,
           name,
-          summary,
           language,
-          rating
+          rating,
+          runtime,
+          summary
         }
       }).then((noMovieFound) => {
         console.log('Unable to load movie information, try again later', noMovieFound)
@@ -68,8 +79,7 @@ img {
 }
 
 .additional-information {
-    background: black;
-    color: white;
+  color: red;
 }
 
 .right-container {
