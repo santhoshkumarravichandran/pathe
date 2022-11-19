@@ -1,7 +1,7 @@
 <template>
   <div>
     <br />
-    <control-bar :genre="genre"></control-bar>
+    <control-bar :genre="genre" :rating="rating"></control-bar>
    <div class="heading-wrapper">
       <heading :tite="category"></heading>
     </div>

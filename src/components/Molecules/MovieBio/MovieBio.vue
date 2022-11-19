@@ -70,7 +70,7 @@ export default {
 <style scoped>
 .container {
     width: 610px;
-    height: auto;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,6 +83,7 @@ img {
 
 .cellphone-container {
     width: 408px;
+    height: 100%;
     background-color: #1e1b26;
     margin: 0 auto;
     box-shadow: 5px 5px 115px -14px black;
