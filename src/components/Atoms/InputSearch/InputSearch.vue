@@ -9,10 +9,11 @@
 </template>
 
 <script>
-import { searchShow, singleSearch } from '../../../services/streamingService'
+import { searchShow } from '../../../services/streamingService'
 
 export default {
   name: 'InputSearch',
+  props: ['allShowInformation'],
   data: function () {
     return {
       suggestion: [],
@@ -27,14 +28,7 @@ export default {
       }, 300)
     },
     onChange: function () {
-      if (this.keyword !== '') {
-        singleSearch(this.keyword).then((response) => {
-          const {id} = response
-          this.$router.push('/movie/' + id)
-        }).catch((error) => {
-          console.log(error)
-        })
-      }
+      this.$parent.onSearch(this.keyword)
     }
   },
   mounted: function () {

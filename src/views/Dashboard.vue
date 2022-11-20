@@ -30,7 +30,7 @@ export default {
   },
   data: function () {
     return {
-      nowStreaming: 'Now Streaming',
+      nowStreaming: 'ACTUEEL FILMAANBOD IN DE BIOSCOOP | PATHÉ',
       allShowsByCategory: [],
       showsByCategory: [],
       genre: ['All'],
@@ -38,6 +38,13 @@ export default {
     }
   },
   methods: {
+    onSearch: function (keyword) {
+      if (keyword !== '') {
+        this.showsByCategory = this.allShowsByCategory.filter((show) => show.name.toLowerCase() === keyword)
+        return
+      }
+      this.showsByCategory = this.allShowsByCategory
+    },
     onGenreFilterClick: function (value, source) {
       if (source === 'Genre') {
         this.showsByCategory = this.allShowsByCategory.filter((show) => {
@@ -49,9 +56,6 @@ export default {
         })
       }
     },
-    /**
-             *
-             */
     getShowsByCategory: function () {
       getAllStreamingsNow(this.category).then((showResponse) => {
         const allGeneres = shared.getGenreList(showResponse)

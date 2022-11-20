@@ -1,33 +1,38 @@
 <template>
     <div class="main">
         <div class="wrapper">
-            <div class="container" v-for="(movieInformation, index) in allShows" :key="index">
-                <div class="content">
-                    <b-img :src="`${movieInformation.image.original}`" fluid alt="Responsive image"></b-img>
-                    <div class="movie-title">
-                        {{ movieInformation.name }}
+            <div class="container" v-for="(showInformation, index) in allShows" :key="index">
+                <div class="content" @click="onShowSelection(showInformation.id)">
+                    <b-img :src="`${showInformation.image.original}`" fluid alt="Responsive image"></b-img>
+                    <div class="show-title">
+                        {{ showInformation.name }}
                     </div>
-                    <div class="movie-subtitle">
-                        {{ movieInformation.language }} | {{ movieInformation.runtime }} Minutes
+                    <div class="show-subtitle">
+                        {{ showInformation.language }} | {{ showInformation.runtime }} Minutes | {{showInformation.genres.join()}}
                     </div>
                 </div>
             </div>
         </div>
+        <div v-if="allShows.length === 0">
+            <no-show-available-vue></no-show-available-vue>
+        </div>
+
     </div>
 </template>
 <script>
 
-import HorizontalList from '../../Molecules/HorizontalList/HorizontalList.vue'
-import Heading from '../../Atoms/Heading/Heading.vue'
-import ControlBar from '../ControlBar/ControlBar.vue'
+import NoShowAvailableVue from '../../Molecules/NoShowAvailable/NoShowAvailable.vue'
 export default {
-    name: 'Gallery',
-    components: {
-        ControlBar,
-        HorizontalList,
-        Heading
-    },
-    props: ['allShows']
+  name: 'Gallery',
+  components: {
+    NoShowAvailableVue
+  },
+  props: ['allShows'],
+  methods: {
+    onShowSelection (id) {
+      this.$router.push(`movie/${id}`)
+    }
+  }
 }
 </script>
 
@@ -41,6 +46,7 @@ export default {
 .container {
     float: left;
     width: 25%;
+    cursor: pointer;
 }
 
 .wrapper:after {
@@ -78,15 +84,16 @@ img {
     }
 }
 
-.movie-title {
+.show-title {
+    margin-top:10px;
     font-weight: bold;
     font-size: 14px;
-
+    background: #ffc426;
+    padding-left:10px;
 }
 
-.movie-subtitle {
-    font-size: 11px;
-    background: #ffc426;
+.show-subtitle {
+    font-size: 10px;
     max-width: 250px;
 }
 </style>

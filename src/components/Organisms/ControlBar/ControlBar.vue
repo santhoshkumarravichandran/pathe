@@ -17,7 +17,7 @@ import InputSearch from '../../Atoms/InputSearch/InputSearch.vue'
 
 export default {
   name: 'ControlBar',
-  props: ['genre', 'rating'],
+  props: ['genre', 'rating', 'allShowInformation'],
   components: {
     GenerFilter,
     InputSearch
@@ -25,6 +25,9 @@ export default {
   methods: {
     onGenreFilterClick: function (option, source) {
       this.$parent.onGenreFilterClick(option, source)
+    },
+    onSearch: function (keyword) {
+      this.$parent.onSearch(keyword)
     }
   }
 }
@@ -34,6 +37,7 @@ export default {
   display: flex;
   max-width: 1000px;
   margin: auto;
+  margin-left: 10px;
 }
 .filter {
   padding-left: 10px;

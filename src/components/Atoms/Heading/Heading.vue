@@ -25,5 +25,6 @@ export default {
   text-align: left;
   font-weight: bold;
   font-size: 16px;
+  margin-left: 20px;
 }
 </style>
