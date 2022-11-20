@@ -1,8 +1,12 @@
 <template>
   <div class="wrapper">
     <br />
-    <control-bar></control-bar>
+    <control-bar :genre="genre" :rating="rating"></control-bar>
     <br />
+    <div class="heading-wrapper">
+      <heading :tite="nowStreaming"></heading>
+    </div>
+    <br/>
     <gallery :all-shows="showsByCategory"></gallery>
   </div>
 </template>
@@ -10,6 +14,7 @@
 
 import ControlBar from '../components/Organisms/ControlBar/ControlBar.vue'
 import Gallery from '../components/Organisms/Gallery/Gallery.vue'
+import Heading from '../components/Atoms/Heading/Heading.vue'
 
 // service import begins here
 import { getAllStreamingsNow } from '../services/streamingService'
@@ -20,14 +25,15 @@ export default {
   name: 'Dashboard',
   components: {
     ControlBar,
-    Gallery
+    Gallery,
+    Heading
   },
   data: function () {
     return {
       nowStreaming: 'Now Streaming',
       allShowsByCategory: [],
       showsByCategory: [],
-      genre: [],
+      genre: ['All'],
       rating: []
     }
   },
