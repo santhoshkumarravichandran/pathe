@@ -1,7 +1,7 @@
 <template>
     <div >
-        <b-navbar toggleable="lg" type="dark" variant="warning">
-            <b-navbar-brand href="#" class="custom-header" @click="navigateToHome()">
+        <b-navbar toggleable="lg" type="dark" variant="warning" class="main">
+            <b-navbar-brand href="/" class="custom-header">
                 <b-img src="https://www.pathe.nl/assets/favicons/favicon-32x32.png"></b-img>
             </b-navbar-brand>
         </b-navbar>

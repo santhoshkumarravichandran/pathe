@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     getSuggestions () {
-      console.log(this.keyword)
       setTimeout(() => {
         this.options = this.suggestion.filter((suggestion) => suggestion.indexOf(this.keyword.toLowerCase()) !== -1)
       }, 300)
@@ -48,7 +47,6 @@ export default {
 </script>
 <style scoped>
 .form-control {
-  margin-left: 10px !important;
   height: 35px;
 }
 

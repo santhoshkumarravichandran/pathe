@@ -32,8 +32,8 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  margin-top: 10px;
-  margin-left: 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 .filter {
   padding-left: 10px;

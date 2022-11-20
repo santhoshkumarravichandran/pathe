@@ -1,27 +1,87 @@
 <template>
-  <div>
+  <div class="wrapper">
+    <br />
     <control-bar></control-bar>
-    <movie-section :category="nowStreaming"></movie-section>
-    <movie-section :category="specialEvents"></movie-section>
-    <movie-section :category="kids"></movie-section>
+    <br />
+    <gallery :all-shows="showsByCategory"></gallery>
   </div>
 </template>
 <script>
 
-import MovieSection from '../components/Organisms/MovieSection/MovieSection.vue'
 import ControlBar from '../components/Organisms/ControlBar/ControlBar.vue'
+import Gallery from '../components/Organisms/Gallery/Gallery.vue'
+
+// service import begins here
+import { getAllStreamingsNow } from '../services/streamingService'
+// shared
+import shared from '../shared/shared'
 
 export default {
   name: 'Dashboard',
   components: {
-    MovieSection, ControlBar
+    ControlBar,
+    Gallery
   },
   data: function () {
     return {
       nowStreaming: 'Now Streaming',
-      specialEvents: 'SpecialEvents',
-      kids: 'Kids Sepcial'
+      allShowsByCategory: [],
+      showsByCategory: [],
+      genre: [],
+      rating: []
     }
+  },
+  methods: {
+    onGenreFilterClick: function (value, source) {
+      if (source === 'Genre') {
+        this.showsByCategory = this.allShowsByCategory.filter((show) => {
+          return show.genres.includes(value)
+        })
+      } else if (source === 'Rating') {
+        this.showsByCategory = this.allShowsByCategory.filter((show) => {
+          return show.rating > value
+        })
+      }
+    },
+    /**
+             *
+             */
+    getShowsByCategory: function () {
+      getAllStreamingsNow(this.category).then((showResponse) => {
+        const allGeneres = shared.getGenreList(showResponse)
+        this.genre = allGeneres
+        // lets format the show information
+        showResponse.forEach((value) => {
+          this.allShowsByCategory.push({
+            image: value.image,
+            name: value.name,
+            language: value.language,
+            runtime: value.runtime,
+            id: value.id,
+            genres: value.genres,
+            rating: value.rating.average
+          })
+          this.showsByCategory.push({
+            image: value.image,
+            name: value.name,
+            language: value.language,
+            runtime: value.runtime,
+            id: value.id,
+            genres: value.genres,
+            rating: value.rating.average
+          })
+        })
+      }).catch((error) => { console.log(error); return [] })
+    }
+  },
+  mounted: function () {
+    this.getShowsByCategory()
   }
 }
 </script>
+<style scoped>
+.wrapper {
+  max-width: 1000px;
+  margin: auto;
+}
+</style>
