@@ -35,9 +35,12 @@ export default {
         }
     },
     methods: {
+        /**
+         * A function to pass the selected filter option(genre, or rating) to the parent component
+         */
         onFilterOptionSection: function(option) {
-            // pass the selected value to parent component
             this.$parent.onGenreFilterClick(option, this.title)
+            // Rating is number, to convert it to string to match the prop definition
             this.text = option.toString()
         }
     }

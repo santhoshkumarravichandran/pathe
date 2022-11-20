@@ -30,20 +30,32 @@ export default {
         }
     },
     methods: {
+        /**
+         * A function to get the list of suggestion (title of the show) matching the keyword
+         */
         getSuggestions() {
             setTimeout(() => {
                 this.options = this.suggestion.filter((suggestion) => suggestion.indexOf(this.keyword.toLowerCase()) !== -1)
             }, 300)
         },
+        /**
+         * A function to send the selected show title to the parent component
+         */
         onChange: function() {
             this.$parent.onSearch(this.keyword)
+        },
+        /**
+         * A function to prepare the list of suggestion( auto complete option)
+         */
+        prepareSuggestion: function(keyword) {
+            searchShow(keyword).then((response) => {
+                const result = response.map((show) => show.name.toLowerCase())
+                this.suggestion = [...new Set(result)]
+            }).catch((error) => console.log(error))
         }
     },
     mounted: function() {
-        searchShow(this.keyword).then((response) => {
-            const result = response.map((show) => show.name.toLowerCase())
-            this.suggestion = [...new Set(result)]
-        }).catch((error) => console.log(error))
+        this.prepareSuggestion(this.keyword)
     }
 }
 </script>
@@ -60,7 +72,4 @@ export default {
   outline: none !important;
 }
 
-.dropdown-menu ul {
-  z-index: 1000;
-}
 </style>

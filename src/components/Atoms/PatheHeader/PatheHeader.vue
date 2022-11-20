@@ -14,6 +14,9 @@
 export default {
     name: 'PatheHeader',
     methods: {
+        /**
+         * A function to route to home page when logo is clicked
+         */
         navigateToHome: function() {
             this.$router.push('/')
         }
@@ -28,15 +31,9 @@ b-navbar {
     padding-left: 40px;
     max-width: 1000px;;
 }
-.icon-content {
-    padding-left: 20px;
-    padding-right: 20px;
-}
 .main{
-
     max-width: 1000px;
-  margin: auto;
-
+    margin: auto;
 }
 .fill {
     width: 100%;

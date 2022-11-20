@@ -7,7 +7,7 @@
                     <h1>{{ title }}</h1>
                     <h4>{{ language }}</h4>
                     <span class="minutes">{{ runtime }} minutes</span>
-                    <p class="type">Action, Crime, Fantasy</p>
+                    <p class="type">{{ genres | formatGenre }}</p>
                 </div>
                 <div class="movie_desc">
                     <div class="text" v-html="summary"/>
@@ -45,11 +45,15 @@ export default {
         summary: {
             type: String,
             required: true
+        },
+        genres: {
+            type: Array,
+            required: true
         }
     },
     filters: {
-        trimText(title) {
-            return title.length > 300 ? title.substring(0, 300) + '...' : title
+        formatGenre: function(inputArray = []) {
+            return inputArray.join()
         }
     }
 }

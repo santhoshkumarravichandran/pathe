@@ -35,6 +35,9 @@ export default {
         }
     },
     methods: {
+        /**
+         * A function to route the user to show route by passing id to the url
+         */
         onShowSelection(id) {
             this.$router.push(`/show/${id}`)
         }

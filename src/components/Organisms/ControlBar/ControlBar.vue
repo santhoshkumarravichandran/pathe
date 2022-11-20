@@ -36,9 +36,15 @@ export default {
         InputSearch
     },
     methods: {
+        /**
+         * A function to send selected filter option with source to parent component
+         */
         onGenreFilterClick: function(option, source) {
             this.$parent.onGenreFilterClick(option, source)
         },
+        /**
+         * A function to send the keyword of the searhc input to parent component
+         */
         onSearch: function(keyword) {
             this.$parent.onSearch(keyword)
         }

@@ -17,6 +17,10 @@ export default new Router({
             path: '/show/:id',
             name: 'ShowInformation',
             component: ShowInformation
+        },
+        {
+            path: '/:catchAll(.*)',
+            redirect: '/'
         }
     ],
     mode: 'history',

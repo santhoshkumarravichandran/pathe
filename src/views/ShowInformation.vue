@@ -7,7 +7,9 @@
                 :imageurl="showInformation.image.original"
                 :runtime="showInformation.runtime"
                 :language="showInformation.language"
-                :summary="showInformation.summary"/>
+                :summary="showInformation.summary"
+                :genres="showInformation.genres"
+            />
             <br >
             <episode class="episode" :episode-information="episodeInformation"/>
         </div>
@@ -47,7 +49,8 @@ export default {
                 },
                 runtime: 0,
                 language: '',
-                summary: ''
+                summary: '',
+                genres: []
             },
             episodeInformation: []
         }
@@ -57,7 +60,7 @@ export default {
             // get the query movie id from the query param and load the movie information
             getShowInformation(showId).then((showDetails) => {
                 const { image, name = 'No Movie Information',
-                    rating, language, summary, runtime, id } = showDetails
+                    rating, language, summary, runtime, id, genres = [] } = showDetails
                 this.showInformation = {
                     image,
                     name,
@@ -65,7 +68,8 @@ export default {
                     rating,
                     runtime,
                     summary,
-                    id
+                    id,
+                    genres
                 }
             }).catch((noShowInformation) => {
                 console.log('Unable to load movie information, try again later', noShowInformation)

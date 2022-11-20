@@ -18,12 +18,7 @@
 <script>
 
 export default {
-    name: 'PatheFooter',
-    data: function() {
-        return {
-            footerMessage: 'Footer Message'
-        }
-    }
+    name: 'PatheFooter'
 }
 </script>
 <style scoped>

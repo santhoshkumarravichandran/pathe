@@ -24,8 +24,6 @@
 
 export default {
     name: 'HorizontalList',
-    components: {
-    },
     props: {
         showInformation: {
             type: Array,
@@ -40,26 +38,25 @@ export default {
         }
     },
     filters: {
-        trimShowTitle(title) {
+        /**
+       * A filter function to trim a string of it exceeds number of character
+       */
+        trimShowTitle(title = '') {
             return title.length > 15 ? title.substring(0, 15) + '...' : title
         }
     },
     methods: {
+        /**
+       * A function to control the horizontal list behaviour
+       */
         onScrollDebounce({ scrollWidth, width, left }) {
             this.width = width
             this.index = Math.round(left / width)
             this.pages = Math.round(scrollWidth / width)
-        },
-        /**
-     * Route/uploads/images/original_untouched/1/4101.jpg to the show information page
-     * @param {number} id
-     */
-        loadshow: function(id) {
-            this.$router.push('/show/' + id)
         }
     },
     mounted: function() {
-    // bring the cursor to index 1
+        // bring the cursor to index 1
         this.$refs.horizontal.scrollToIndex(1)
     }
 }

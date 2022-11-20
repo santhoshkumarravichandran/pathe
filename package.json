@@ -1,7 +1,7 @@
 {
   "name": "pathe",
   "version": "1.0.0",
-  "description": "A simple vue js project",
+  "description": "Pathe Thuis, a web application to show the list of shows available - built in vuejs",
   "author": "santhoshkumarravichandran <santhoshkumar.ravi@gmail.com>",
   "private": true,
   "scripts": {
@@ -18,8 +18,7 @@
     "bootstrap-vue": "^2.23.1",
     "vue": "^2.5.2",
     "vue-horizontal": "^0.8.12",
-    "vue-router": "^3.0.1",
-    "vuesax": "^3.12.2"
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

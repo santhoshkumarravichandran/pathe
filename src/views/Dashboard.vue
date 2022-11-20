@@ -51,7 +51,7 @@ export default {
                     return show.genres.includes(value)
                 })
             } else if (source === 'Rating') {
-                 this.showsByCategory   = this.allShowsByCategory.filter((show) => {
+                this.showsByCategory = this.allShowsByCategory.filter((show) => {
                     return show.rating > value
                 })
             }
@@ -62,24 +62,26 @@ export default {
                 this.genre = allGeneres
                 // lets format the show information
                 showResponse.forEach((value) => {
-                    this.allShowsByCategory.push({
-                        image: value.image,
-                        name: value.name,
-                        language: value.language,
-                        runtime: value.runtime,
-                        id: value.id,
-                        genres: value.genres,
-                        rating: value.rating.average
-                    })
-                    this.showsByCategory.push({
-                        image: value.image,
-                        name: value.name,
-                        language: value.language,
-                        runtime: value.runtime,
-                        id: value.id,
-                        genres: value.genres,
-                        rating: value.rating.average
-                    })
+                    if (value.image) {
+                        this.allShowsByCategory.push({
+                            image: value.image,
+                            name: value.name,
+                            language: value.language,
+                            runtime: value.runtime,
+                            id: value.id,
+                            genres: value.genres,
+                            rating: value.rating.average
+                        })
+                        this.showsByCategory.push({
+                            image: value.image,
+                            name: value.name,
+                            language: value.language,
+                            runtime: value.runtime,
+                            id: value.id,
+                            genres: value.genres,
+                            rating: value.rating.average
+                        })
+                    }
                 })
             }).catch((error) => { console.log(error); return [] })
         }
