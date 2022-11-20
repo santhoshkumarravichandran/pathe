@@ -6,18 +6,18 @@
 
 <script>
 export default {
-  name: 'Heading',
-  props: {
-    tite: {
-      type: String,
-      required: true
+    name: 'Heading',
+    props: {
+        tite: {
+            type: String,
+            required: true
+        }
+    },
+    filters: {
+        tranformToCaps(title) {
+            return title.toUpperCase()
+        }
     }
-  },
-  filters: {
-    tranformToCaps (title) {
-      return title.toUpperCase()
-    }
-  }
 }
 </script>
 <style scoped>

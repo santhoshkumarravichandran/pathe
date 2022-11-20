@@ -13,7 +13,8 @@ module.exports = {
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
     'plugin:vue/essential', 
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    'standard'
+    'standard',
+    'plugin:vue/strongly-recommended'
   ],
   // required to lint *.vue files
   plugins: [
@@ -24,6 +25,24 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    "vue/html-indent": ["error", 4, {
+      "attribute": 1,
+      "closeBracket": 0,
+      "switchCase": 0,
+      "ignores": []
+  }],
+  "vue/max-attributes-per-line": [2, {
+    "singleline": 10,
+    "multiline": {
+      "max": 1,
+      "allowFirstLine": false
+    }
+  }],
+  'indent': ['error', 4],
+  'space-before-function-paren': ['error', 'never'],
+  'semi': [2, "never"],
+  'vue/singleline-html-element-content-newline': 'off',
+  'vue/multiline-html-element-content-newline': 'off'
   }
 }

@@ -1,14 +1,14 @@
 <template>
-  <div class="wrapper">
-    <br />
-    <control-bar :genre="genre" :rating="rating"></control-bar>
-    <br />
-    <div class="heading-wrapper">
-      <heading :tite="nowStreaming"></heading>
+    <div class="wrapper">
+        <br >
+        <control-bar :genre="genre" :rating="rating"/>
+        <br >
+        <div>
+            <heading :tite="nowStreaming"/>
+        </div>
+        <br>
+        <gallery :all-shows="showsByCategory"/>
     </div>
-    <br/>
-    <gallery :all-shows="showsByCategory"></gallery>
-  </div>
 </template>
 <script>
 
@@ -22,71 +22,71 @@ import { getAllStreamingsNow } from '../services/streamingService'
 import shared from '../shared/shared'
 
 export default {
-  name: 'Dashboard',
-  components: {
-    ControlBar,
-    Gallery,
-    Heading
-  },
-  data: function () {
-    return {
-      nowStreaming: 'ACTUEEL FILMAANBOD IN DE BIOSCOOP | PATHÉ',
-      allShowsByCategory: [],
-      showsByCategory: [],
-      genre: ['All'],
-      rating: []
-    }
-  },
-  methods: {
-    onSearch: function (keyword) {
-      if (keyword !== '') {
-        this.showsByCategory = this.allShowsByCategory.filter((show) => show.name.toLowerCase() === keyword)
-        return
-      }
-      this.showsByCategory = this.allShowsByCategory
+    name: 'Dashboard',
+    components: {
+        ControlBar,
+        Gallery,
+        Heading
     },
-    onGenreFilterClick: function (value, source) {
-      if (source === 'Genre') {
-        this.showsByCategory = this.allShowsByCategory.filter((show) => {
-          return show.genres.includes(value)
-        })
-      } else if (source === 'Rating') {
-        this.showsByCategory = this.allShowsByCategory.filter((show) => {
-          return show.rating > value
-        })
-      }
+    data: function() {
+        return {
+            nowStreaming: 'ACTUEEL FILMAANBOD IN DE BIOSCOOP | PATHÉ',
+            allShowsByCategory: [],
+            showsByCategory: [],
+            genre: ['All'],
+            rating: []
+        }
     },
-    getShowsByCategory: function () {
-      getAllStreamingsNow(this.category).then((showResponse) => {
-        const allGeneres = shared.getGenreList(showResponse)
-        this.genre = allGeneres
-        // lets format the show information
-        showResponse.forEach((value) => {
-          this.allShowsByCategory.push({
-            image: value.image,
-            name: value.name,
-            language: value.language,
-            runtime: value.runtime,
-            id: value.id,
-            genres: value.genres,
-            rating: value.rating.average
-          })
-          this.showsByCategory.push({
-            image: value.image,
-            name: value.name,
-            language: value.language,
-            runtime: value.runtime,
-            id: value.id,
-            genres: value.genres,
-            rating: value.rating.average
-          })
-        })
-      }).catch((error) => { console.log(error); return [] })
+    methods: {
+        onSearch: function(keyword) {
+            if (keyword !== '') {
+                this.showsByCategory = this.allShowsByCategory.filter((show) => show.name.toLowerCase() === keyword)
+                return
+            }
+            this.showsByCategory = this.allShowsByCategory
+        },
+        onGenreFilterClick: function(value, source) {
+            if (source === 'Genre') {
+                this.showsByCategory = this.allShowsByCategory.filter((show) => {
+                    return show.genres.includes(value)
+                })
+            } else if (source === 'Rating') {
+                this.showsByCategory = this.allShowsByCategory.filter((show) => {
+                    return show.rating > value
+                })
+            }
+        },
+        getShowsByCategory: function() {
+            getAllStreamingsNow(this.category).then((showResponse) => {
+                const allGeneres = shared.getGenreList(showResponse)
+                this.genre = allGeneres
+                // lets format the show information
+                showResponse.forEach((value) => {
+                    this.allShowsByCategory.push({
+                        image: value.image,
+                        name: value.name,
+                        language: value.language,
+                        runtime: value.runtime,
+                        id: value.id,
+                        genres: value.genres,
+                        rating: value.rating.average
+                    })
+                    this.showsByCategory.push({
+                        image: value.image,
+                        name: value.name,
+                        language: value.language,
+                        runtime: value.runtime,
+                        id: value.id,
+                        genres: value.genres,
+                        rating: value.rating.average
+                    })
+                })
+            }).catch((error) => { console.log(error); return [] })
+        }
+    },
+    mounted: function() {
+        this.getShowsByCategory()
     }
-  },
-  mounted: function () {
-    this.getShowsByCategory()
-  }
 }
 </script>
 <style scoped>

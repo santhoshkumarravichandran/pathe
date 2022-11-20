@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div class="container" v-for="(showInformation, index) in allShows" :key="index">
                 <div class="content" @click="onShowSelection(showInformation.id)">
-                    <b-img :src="`${showInformation.image.original}`" fluid alt="Responsive image"></b-img>
+                    <b-img :src="`${showInformation.image.original}`" fluid alt="Responsive image"/>
                     <div class="show-title">
                         {{ showInformation.name }}
                     </div>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div v-if="allShows.length === 0">
-            <no-show-available-vue></no-show-available-vue>
+            <no-show-available-vue/>
         </div>
 
     </div>
@@ -24,16 +24,21 @@
 
 import NoShowAvailableVue from '../../Molecules/NoShowAvailable/NoShowAvailable.vue'
 export default {
-  name: 'Gallery',
-  components: {
-    NoShowAvailableVue
-  },
-  props: ['allShows'],
-  methods: {
-    onShowSelection (id) {
-      this.$router.push(`movie/${id}`)
+    name: 'Gallery',
+    components: {
+        NoShowAvailableVue
+    },
+    props: {
+        allShows: {
+            type: Array,
+            default: () => ([])
+        }
+    },
+    methods: {
+        onShowSelection(id) {
+            this.$router.push(`/show/${id}`)
+        }
     }
-  }
 }
 </script>
 

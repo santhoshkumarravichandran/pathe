@@ -1,29 +1,46 @@
 <template>
     <div class="genere-filter">
-        <b-dropdown size="sm" v-bind:text="(text || title)"
-         id="dropdown-right" right  variant="warning" class="md-2 ">
-            <b-dropdown-item @click="onFilterOptionSection(option)"
-            v-for="option in filterOptions" :value="option" :key="option">{{option}}</b-dropdown-item>
+        <b-dropdown
+            size="sm"
+            :text="(text || title)"
+            id="dropdown-right"
+            right
+            variant="warning"
+            class="md-2 ">
+            <b-dropdown-item
+                @click="onFilterOptionSection(option)"
+                v-for="option in filterOptions"
+                :value="option"
+                :key="option">{{ option }}</b-dropdown-item>
         </b-dropdown>
     </div>
 </template>
 <script>
 
 export default {
-  name: 'GenerFilter',
-  props: ['filterOptions', 'title'],
-  data () {
-    return {
-      text: null
+    name: 'GenerFilter',
+    props: {
+        filterOptions: {
+            type: Array,
+            default: () => ([])
+        },
+        title: {
+            type: String,
+            default: ''
+        }
+    },
+    data() {
+        return {
+            text: null
+        }
+    },
+    methods: {
+        onFilterOptionSection: function(option) {
+            // pass the selected value to parent component
+            this.$parent.onGenreFilterClick(option, this.title)
+            this.text = option
+        }
     }
-  },
-  methods: {
-    onFilterOptionSection: function (option) {
-      // pass the selected value to parent component
-      this.$parent.onGenreFilterClick(option, this.title)
-      this.text = option
-    }
-  }
 }
 </script>
 <style scoped>

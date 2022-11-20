@@ -1,58 +1,57 @@
 <template>
-  <main>
-    <div class="show_card" id="bright">
-      <div class="info_section">
-        <div class="movie_header">
-          <img class="locandina" :src="`${imageURL}`" />
-          <h1>{{ title }}</h1>
-          <h4>{{ language }}</h4>
-          <span class="minutes">{{ runtime }} minutes</span>
-          <p class="type">Action, Crime, Fantasy</p>
+    <main>
+        <div class="show_card" id="bright">
+            <div class="info_section">
+                <div class="movie_header">
+                    <img class="locandina" :src="`${imageURL}`" >
+                    <h1>{{ title }}</h1>
+                    <h4>{{ language }}</h4>
+                    <span class="minutes">{{ runtime }} minutes</span>
+                    <p class="type">Action, Crime, Fantasy</p>
+                </div>
+                <div class="movie_desc">
+                    <div class="text" v-html="summary"/>
+                </div>
+            </div>
+            <div class="blur_back" :style="{ 'background-image': 'url(' + imageURL + ')' }"/>
         </div>
-        <div class="movie_desc">
-          <div class="text" v-html="summary">
-          </div>
-        </div>
-      </div>
-      <div class="blur_back" v-bind:style="{ 'background-image': 'url(' + imageURL + ')' }"></div>
-    </div>
-  </main>
+    </main>
 </template>
 
 <script>
 
 export default {
-  name: 'ShowInformation',
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    imageURL: {
-      type: String,
-      required: true
+    name: 'ShowInformation',
+    props: {
+        title: {
+            type: String,
+            required: true
+        },
+        imageURL: {
+            type: String,
+            required: true
 
-    },
-    language: {
-      type: String,
-      required: true
+        },
+        language: {
+            type: String,
+            required: true
 
-    },
-    runtime: {
-      type: Number,
-      required: true
+        },
+        runtime: {
+            type: Number,
+            required: true
 
+        },
+        summary: {
+            type: String,
+            required: true
+        }
     },
-    summary: {
-      type: String,
-      required: true
+    filters: {
+        trimText(title) {
+            return title.length > 300 ? title.substring(0, 300) + '...' : title
+        }
     }
-  },
-  filters: {
-    trimText (title) {
-      return title.length > 300 ? title.substring(0, 300) + '...' : title
-    }
-  }
 }
 </script>
 <style scoped>

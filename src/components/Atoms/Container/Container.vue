@@ -1,11 +1,10 @@
 <template>
-    <div class="wrapper">
-    </div>
+    <div class="wrapper"/>
 </template>
 <script>
 
 export default {
-  name: 'Container'
+    name: 'Container'
 }
 </script>
 <style scoped>

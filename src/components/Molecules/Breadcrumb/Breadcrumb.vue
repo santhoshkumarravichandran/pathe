@@ -10,7 +10,7 @@
 <script>
 
 export default {
-  name: 'BreadCrumb'
+    name: 'BreadCrumb'
 }
 </script>
 <style scoped>

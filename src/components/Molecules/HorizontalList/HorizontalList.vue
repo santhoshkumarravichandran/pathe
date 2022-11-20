@@ -1,59 +1,68 @@
 <template>
     <main>
-      <vue-horizontal ref="horizontal" class="horizontal" :button-between="false" @scroll-debounce="onScrollDebounce">
-        <div class="item wrapper" v-for="(movieInformation, index) in showInformation" :key="index"
-          style="height:250px;" @click="loadMovieInformation(movieInformation.id)">
-          <div class="container">
-            <b-img :src="`${movieInformation.image.original}`" fluid alt="Responsive image"></b-img>
-            <div class="movie-title">
-              {{ movieInformation.name | trimShowTitle }}
+        <vue-horizontal ref="horizontal" class="horizontal" :button-between="false" @scroll-debounce="onScrollDebounce">
+            <div
+                class="item wrapper"
+                v-for="(show, index) in showInformation"
+                :key="index"
+                style="height:250px;"
+                @click="loadshow(show.id)">
+                <div class="container">
+                    <b-img :src="`${show.image.original}`" fluid alt="Responsive image"/>
+                    <div class="show-title">
+                        {{ show.name | trimShowTitle }}
+                    </div>
+                    <div class="show-subtitle">
+                        Season{{ show.season }} | {{ show.runtime }} Minutes
+                    </div>
+                </div>
             </div>
-            <div class="movie-subtitle">
-              {{ movieInformation.language }} | {{ movieInformation.runtime }} Minutes
-            </div>
-          </div>
-        </div>
-      </vue-horizontal>
+        </vue-horizontal>
     </main>
 </template>
 
 <script>
 
 export default {
-  name: 'HorizontalList',
-  components: {
-  },
-  props: ['showInformation'],
-  data: function () {
-    return {
-      width: 0,
-      index: 0,
-      pages: 0
-    }
-  },
-  filters: {
-    trimShowTitle (title) {
-      return title.length > 15 ? title.substring(0, 15) + '...' : title
-    }
-  },
-  methods: {
-    onScrollDebounce ({ scrollWidth, width, left }) {
-      this.width = width
-      this.index = Math.round(left / width)
-      this.pages = Math.round(scrollWidth / width)
+    name: 'HorizontalList',
+    components: {
     },
-    /**
-     * Route to the movie information page
+    props: {
+        showInformation: {
+            type: Array,
+            default: () => ([])
+        }
+    },
+    data: function() {
+        return {
+            width: 0,
+            index: 0,
+            pages: 0
+        }
+    },
+    filters: {
+        trimShowTitle(title) {
+            return title.length > 15 ? title.substring(0, 15) + '...' : title
+        }
+    },
+    methods: {
+        onScrollDebounce({ scrollWidth, width, left }) {
+            this.width = width
+            this.index = Math.round(left / width)
+            this.pages = Math.round(scrollWidth / width)
+        },
+        /**
+     * Route/uploads/images/original_untouched/1/4101.jpg to the show information page
      * @param {number} id
      */
-    loadMovieInformation: function (id) {
-      this.$router.push('/movie/' + id)
-    }
-  },
-  mounted: function () {
+        loadshow: function(id) {
+            this.$router.push('/show/' + id)
+        }
+    },
+    mounted: function() {
     // bring the cursor to index 1
-    this.$refs.horizontal.scrollToIndex(1)
-  }
+        this.$refs.horizontal.scrollToIndex(1)
+    }
 }
 </script>
 <style scoped>
@@ -94,12 +103,12 @@ img {
   cursor: pointer;
 }
 
-.movie-title {
+.show-title {
   font-weight: bold;
   font-size: 14px;
 }
 
-.movie-subtitle {
+.show-subtitle {
   font-size: 11px;
   background: #ffc426;
 }

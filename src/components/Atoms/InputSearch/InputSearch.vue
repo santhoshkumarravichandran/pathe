@@ -1,42 +1,50 @@
 <template>
-  <div>
-      <b-form-input list="input-list" id="input-with-list" v-model="keyword"
-        placeholder="Search your fav show"
-        @change="onChange(keyword)"
-      @input="getSuggestions"></b-form-input>
-      <b-form-datalist id="input-list" :options="options" @change="onChange()"></b-form-datalist>
-  </div>
+    <div>
+        <b-form-input
+            list="input-list"
+            id="input-with-list"
+            v-model="keyword"
+            placeholder="Search your fav show"
+            @change="onChange(keyword)"
+            @input="getSuggestions"/>
+        <b-form-datalist id="input-list" :options="options" @change="onChange()"/>
+    </div>
 </template>
 
 <script>
 import { searchShow } from '../../../services/streamingService'
 
 export default {
-  name: 'InputSearch',
-  props: ['allShowInformation'],
-  data: function () {
-    return {
-      suggestion: [],
-      keyword: '',
-      options: []
-    }
-  },
-  methods: {
-    getSuggestions () {
-      setTimeout(() => {
-        this.options = this.suggestion.filter((suggestion) => suggestion.indexOf(this.keyword.toLowerCase()) !== -1)
-      }, 300)
+    name: 'InputSearch',
+    props: {
+        allShowInformation: {
+            type: Array,
+            default: () => ([])
+        }
     },
-    onChange: function () {
-      this.$parent.onSearch(this.keyword)
+    data: function() {
+        return {
+            suggestion: [],
+            keyword: '',
+            options: []
+        }
+    },
+    methods: {
+        getSuggestions() {
+            setTimeout(() => {
+                this.options = this.suggestion.filter((suggestion) => suggestion.indexOf(this.keyword.toLowerCase()) !== -1)
+            }, 300)
+        },
+        onChange: function() {
+            this.$parent.onSearch(this.keyword)
+        }
+    },
+    mounted: function() {
+        searchShow(this.keyword).then((response) => {
+            const result = response.map((show) => show.name.toLowerCase())
+            this.suggestion = [...new Set(result)]
+        }).catch((error) => console.log(error))
     }
-  },
-  mounted: function () {
-    searchShow(this.keyword).then((response) => {
-      const result = response.map((show) => show.name.toLowerCase())
-      this.suggestion = [...new Set(result)]
-    }).catch((error) => console.log(error))
-  }
 }
 </script>
 <style scoped>

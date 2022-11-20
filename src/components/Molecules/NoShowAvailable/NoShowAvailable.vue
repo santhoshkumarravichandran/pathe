@@ -7,6 +7,6 @@
 <script>
 
 export default {
-  name: 'No Show Available'
+    name: 'NoShowAvailable'
 }
 </script>

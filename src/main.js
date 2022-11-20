@@ -23,21 +23,21 @@ Vue.use(IconsPlugin)
 Vue.use(VueHorizontal)
 
 Vue.use(Vuesax, {
-  colors: {
-    primary: '#5b3cc4',
-    success: 'rgb(23, 201, 100)',
-    danger: 'rgb(242, 19, 93)',
-    warning: 'rgb(255, 130, 0)',
-    dark: 'rgb(36, 33, 69)'
-  }
+    colors: {
+        primary: '#5b3cc4',
+        success: 'rgb(23, 201, 100)',
+        danger: 'rgb(242, 19, 93)',
+        warning: 'rgb(255, 130, 0)',
+        dark: 'rgb(36, 33, 69)'
+    }
 })
 
 Vue.config.productionTip = true
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#pathe',
-  router,
-  components: { pathe },
-  template: '<pathe/>'
+    el: '#pathe',
+    router,
+    components: { pathe },
+    template: '<pathe/>'
 })
