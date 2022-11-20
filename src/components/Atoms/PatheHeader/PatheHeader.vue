@@ -1,10 +1,12 @@
 <template>
-    <div >
-        <b-navbar toggleable="lg" type="dark" variant="warning" class="main">
-            <b-navbar-brand href="/" class="custom-header">
-                <b-img src="https://www.pathe.nl/assets/favicons/favicon-32x32.png"/>
-            </b-navbar-brand>
-        </b-navbar>
+    <div class="fill">
+        <div class="main">
+            <b-navbar toggleable="lg" type="dark" variant="warning" class="main">
+                <b-navbar-brand href="/" class="custom-header">
+                    <b-img src="https://www.pathe.nl/assets/favicons/favicon-32x32.png"/>
+                </b-navbar-brand>
+            </b-navbar>
+        </div>
     </div>
 </template>
 <script>
@@ -24,9 +26,20 @@ b-navbar {
 }
 .custom-header {
     padding-left: 40px;
+    max-width: 1000px;;
 }
 .icon-content {
     padding-left: 20px;
     padding-right: 20px;
+}
+.main{
+
+    max-width: 1000px;
+  margin: auto;
+
+}
+.fill {
+    width: 100%;
+    background: #ffc426;
 }
 </style>

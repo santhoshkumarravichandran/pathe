@@ -1,9 +1,9 @@
 <template>
-    <main>
+    <main class="main">
         <div class="show_card" id="bright">
             <div class="info_section">
                 <div class="movie_header">
-                    <img class="locandina" :src="`${imageURL}`" >
+                    <img class="locandina" :src="`${imageurl}`" >
                     <h1>{{ title }}</h1>
                     <h4>{{ language }}</h4>
                     <span class="minutes">{{ runtime }} minutes</span>
@@ -13,7 +13,7 @@
                     <div class="text" v-html="summary"/>
                 </div>
             </div>
-            <div class="blur_back" :style="{ 'background-image': 'url(' + imageURL + ')' }"/>
+            <div class="blur_back" :style="{ 'background-image': 'url(' + imageurl + ')' }"/>
         </div>
     </main>
 </template>
@@ -27,7 +27,7 @@ export default {
             type: String,
             required: true
         },
-        imageURL: {
+        imageurl: {
             type: String,
             required: true
 

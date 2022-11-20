@@ -34,7 +34,7 @@ export default {
             allShowsByCategory: [],
             showsByCategory: [],
             genre: ['All'],
-            rating: []
+            rating: [...Array(10).keys()]
         }
     },
     methods: {
@@ -51,7 +51,7 @@ export default {
                     return show.genres.includes(value)
                 })
             } else if (source === 'Rating') {
-                this.showsByCategory = this.allShowsByCategory.filter((show) => {
+                 this.showsByCategory   = this.allShowsByCategory.filter((show) => {
                     return show.rating > value
                 })
             }

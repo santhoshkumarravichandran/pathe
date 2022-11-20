@@ -5,8 +5,7 @@
                 class="item wrapper"
                 v-for="(show, index) in showInformation"
                 :key="index"
-                style="height:250px;"
-                @click="loadshow(show.id)">
+                style="height:250px;">
                 <div class="container">
                     <b-img :src="`${show.image.original}`" fluid alt="Responsive image"/>
                     <div class="show-title">

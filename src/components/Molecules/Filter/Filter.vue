@@ -38,7 +38,7 @@ export default {
         onFilterOptionSection: function(option) {
             // pass the selected value to parent component
             this.$parent.onGenreFilterClick(option, this.title)
-            this.text = option
+            this.text = option.toString()
         }
     }
 }

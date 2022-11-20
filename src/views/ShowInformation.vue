@@ -1,15 +1,18 @@
 <template>
-    <div>
+    <div class="fill">
         <breadcrumb/>
-        <show-information-card
-            :title="showInformation.name"
-            :image-url="showInformation.image.original"
-            :runtime="showInformation.runtime"
-            :language="showInformation.language"
-            :summary="showInformation.summary"/>
-        <br >
-        <episode class="episode" :episode-information="episodeInformation"/>
+        <div class="main">
+            <show-information-card
+                :title="showInformation.name"
+                :imageurl="showInformation.image.original"
+                :runtime="showInformation.runtime"
+                :language="showInformation.language"
+                :summary="showInformation.summary"/>
+            <br >
+            <episode class="episode" :episode-information="episodeInformation"/>
+        </div>
     </div>
+
 </template>
 <script>
 import { getShowInformation, getEpisodeInformation } from '../services/streamingService'
@@ -83,7 +86,10 @@ export default {
 .wrapper {
   display: flex;
 }
-
+.main {
+    max-width: 1000px;
+  margin: auto;
+}
 img {
   width: 300px;
 }
@@ -100,4 +106,7 @@ img {
   flex: 1;
 }
 
+.fill {
+    width: 100%;
+}
 </style>

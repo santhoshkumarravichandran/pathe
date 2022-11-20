@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main class="main">
         <ul class="breadcrumb">
             <li><a href="/">Home</a></li>
             <li>Show Information</li>
@@ -14,6 +14,11 @@ export default {
 }
 </script>
 <style scoped>
+.main{
+  background-color: #eee;
+  width: 100%;
+  height:100%;
+}
 ul.breadcrumb {
   padding: 10px 16px;
   list-style: none;
