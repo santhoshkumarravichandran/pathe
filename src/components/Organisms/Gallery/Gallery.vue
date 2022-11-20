@@ -8,7 +8,8 @@
                         {{ showInformation.name }}
                     </div>
                     <div class="show-subtitle">
-                        {{ showInformation.language }} | {{ showInformation.runtime }} Minutes | {{showInformation.genres.join()}}
+                        {{ showInformation.language }} | {{ showInformation.runtime }} Minutes |
+                        {{ showInformation.genres.join() }}
                     </div>
                 </div>
             </div>
@@ -73,27 +74,41 @@ img {
     font-size: 14px;
 }
 
-@media screen and (max-width: 400px) {
-    .image-grid {
-        flex-direction: column;
-        flex-wrap: no-wrap;
-    }
-
-    .image-grid div {
-        width: 100%;
-    }
-}
-
 .show-title {
-    margin-top:10px;
+    margin-top: 10px;
     font-weight: bold;
     font-size: 14px;
     background: #ffc426;
-    padding-left:10px;
+    padding-left: 10px;
 }
 
 .show-subtitle {
     font-size: 10px;
     max-width: 250px;
+}
+
+@media screen and (max-width: 961px) {
+    .wrapper {
+        margin: 0 auto;
+
+    }
+    .container {
+        float: left;
+        width: 30%;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .wrapper {
+        margin: 0 auto;
+
+    }
+    .container {
+        float: left;
+        width: 50%;
+        cursor: pointer;
+    }
+
 }
 </style>

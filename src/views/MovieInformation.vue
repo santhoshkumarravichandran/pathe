@@ -1,27 +1,21 @@
 <template>
-    <div>
-        <div class="wrapper">
-            <div clss="left-container">
-            </div>
-            <div class="right-container">
-              <movie-bio
-              :title="movieInformation.name"
-              :imageURL="movieInformation.image.original"
-              :runtime="movieInformation.runtime"
-              :language="movieInformation.language"
-              :summary="movieInformation.summary"
-              ></movie-bio>
-            </div>
-        </div>
-    </div>
+  <div>
+    <breadcrumb></breadcrumb>
+    <show-information-card :title="movieInformation.name" :imageURL="movieInformation.image.original"
+      :runtime="movieInformation.runtime" :language="movieInformation.language" :summary="movieInformation.summary">
+    </show-information-card>
+  </div>
 </template>
 <script>
 import { getShowInformation } from '../services/streamingService'
-import MovieBio from '../components/Molecules/MovieBio/MovieBio.vue'
+import ShowInformationCard from '../components/Organisms/ShowInformationCard/ShowInformationCard.vue'
+import Breadcrumb from '../components/Molecules/Breadcrumb/Breadcrumb.vue'
+
 export default {
   name: 'MovieInformation',
   components: {
-    MovieBio
+    ShowInformationCard,
+    Breadcrumb
   },
   mounted: function () {
     const movieId = this.$route.params.id
@@ -67,15 +61,15 @@ export default {
 </script>
 <style scoped>
 .wrapper {
-    display: flex;
+  display: flex;
 }
 
 img {
-    width: 300px;
+  width: 300px;
 }
 
 .left-container {
-    width: 150px;
+  width: 150px;
 }
 
 .additional-information {
@@ -83,6 +77,6 @@ img {
 }
 
 .right-container {
-    flex: 1;
+  flex: 1;
 }
 </style>
